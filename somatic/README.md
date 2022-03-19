@@ -33,7 +33,7 @@ After calling, the following postprocessing steps are impelmented (`rules/postpr
 
 ```
 conda env create -f environment.yml
-conda activate gatk_somatic
+conda activate vcalling
 ```
 
 3. Create a text file  *all_patients* listing all *patient_N* in *input_data_dir* (see `rules/common.smk`).

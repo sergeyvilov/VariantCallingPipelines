@@ -20,7 +20,7 @@ See [rules](rules/) for a more detailed description of what's going on.
 
 ```
 conda env create -f environment.yml
-conda activate gatk_all
+conda activate vcalling
 ```
 
 3. Set the required parameters in `config.yaml` (see [rules](rules/) for additional details).

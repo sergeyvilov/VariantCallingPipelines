@@ -14,7 +14,7 @@ Input samples should be prepared according to [GATK best practices of data-prepr
 
 ```
 conda env create -f environment.yml
-conda activate gatk_germ
+conda activate vcalling
 
 ```
 
@@ -22,7 +22,7 @@ conda activate gatk_germ
 
 There are two possible ways:
 
--  Use gatk4 package from the gatk_germ environment
+-  Use gatk4 package from the *vcalling* environment
 In this case, not all tools can run properly (e.g. VariantRecalibrator can't make R plots)
 But it's ok for such tools as Mutect2 or Haplotype Caller
 

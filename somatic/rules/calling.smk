@@ -6,7 +6,7 @@ rule mutect2:
         tumor_bam = input_data_dir + "{patient}.tumor.bam",
         normal_bam = input_data_dir + "{patient}.normal.bam",
         ref = refgen_fa,
-        germline_resource = config["gnomAD_by_chromosome_dir"] + 'gnomAD.{contig}.vcf.gz',
+        germline_resource = config["gnomAD_light_vcf"],
         pon = pon_dir + "pon.vcf.gz",
     output:
         vcf = called_dir + "{patient}.{contig}.vcf.gz",

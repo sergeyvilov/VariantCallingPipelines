@@ -5,7 +5,7 @@ rule mutect2_pon:
     input:
         normal_bam = input_data_dir + "{patient}.normal.bam",
         ref = refgen_fa,
-        germline_resource = config["gnomAD_by_chromosome_dir"] + 'gnomAD.{contig}.vcf.gz',
+        germline_resource = config["gnomAD_light_vcf"],
     output:
         vcf = pon_dir + "called/{patient}.{contig}.vcf.gz",
         tbi = pon_dir + "called/{patient}.{contig}.vcf.gz.tbi",
