@@ -1,0 +1,24 @@
+__default__:
+    mem: "2g"
+    threads_per_core: 1
+    cores: 1
+
+HaplotypeCaller:
+    mem: "4g"
+    threads_per_core: 1
+    cores: 4
+
+apply_vqsr:
+    mem: "5g"
+
+recalibrate_indel_calls:
+    mem: "24g"
+
+recalibrate_snv_calls:
+    mem: "24g"
+
+excess_het:
+    mem: "3g"
+
+hard_filter_calls:
+    mem: "3g"

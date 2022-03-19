@@ -1,0 +1,103 @@
+refgen_fa: /storage/groups/epigenereg01/workspace/projects/vale/calling/MLL/resources_GRCh37/GRCh37.fa #reference genome FASTA file
+refgen_dict: /storage/groups/epigenereg01/workspace/projects/vale/calling/MLL/resources_GRCh37/GRCh37.dict #reference genome DICT file
+
+gnomAD_light_vcf: /storage/groups/epigenereg01/workspace/projects/vale/tools/gnomAD/v3.1.1_GRCh38/af_only/GRCh37/gnomAD.GRCh38.concat.GRCh37.vcf.gz #gnomAD vcf file, with INFO field having only the AF record
+
+N_test_bams: 3 #number of BAM files for which calling is performed on the entire genome
+
+intervals_dir: None #'None' or directory with BED files defining calling intervals for each BAM file
+
+germline_vcfs_dir: None #'None' or directory with germline VCFs: one VCF per sample, germline VCFs should have names {bam_sample_name}.vcf.gz
+
+#MLL
+project_name: MLL
+#directory with original BAM files
+input_data_dir: /storage/groups/epigenereg01/datasets/MLL-5000-genomes/matched_pairs/BAM/
+#
+# #list of tumor BAM files in input_data_dir
+# #tumor_bams_list: /storage/groups/epigenereg01/datasets/MLL-5000-genomes/matched_pairs/BAM/tumor_bams
+
+#output directory
+progress_dir: /storage/groups/epigenereg01/workspace/projects/vale/calling/MLL/negatives/
+#'None' or path to a VCF file with somatic variants which are to be filtered out
+somatic_vcf: /storage/groups/epigenereg01/workspace/projects/vale/calling/MLL/somatic/GATK/concat/snvs/analysis/snvs.filtered.refseq.gnomAD.manual_filt.vcf.gz
+#'None' or a csv file with train/test split
+train_test_split_csv: /storage/groups/epigenereg01/workspace/projects/vale/calling/MLL/somatic/GATK/concat/snvs/analysis/train_test_split.csv
+#'None' or directory with germline VCFs: one VCF per sample, germline VCFs should have names {bam_sample_name}.vcf.gz
+germline_vcfs_dir: /storage/groups/epigenereg01/workspace/projects/vale/calling/MLL/germline/filtered/vqsr/99.9/by_sample/
+
+
+#TCGA-LAML
+
+#directory contatining BAM files
+#input_data_dir: /storage/groups/epigenereg01/projects/vale/data/202011061/TCGA/LAML_WGS/
+
+#list of tumor BAM files in input_data_dir
+#tumor_bams_list: /storage/groups/epigenereg01/workspace/projects/vale/calling/TCGA-LAML/tumor_wgs_bams_build37_duplicates_removed
+
+#train_test_split_csv: /storage/groups/epigenereg01/workspace/projects/vale/calling/TCGA-LAML/negatives/train_test_split.csv
+
+#progress_dir: /storage/groups/epigenereg01/workspace/projects/vale/calling/TCGA-LAML/negatives/
+
+#somatic_vcf: /storage/groups/epigenereg01/workspace/projects/vale/mutation_tables/TCGA-LAML/somatic/all_somatic_GRCh37.vcf.gz
+
+#germline_vcfs_dir: /storage/groups/epigenereg01/workspace/projects/vale/calling/TCGA-LAML/germline/filtered/vqsr/99.9/by_sample/
+
+#GACA-CN
+
+#project_name: GACA-CN
+
+#input_data_dir: /storage/groups/epigenereg01/workspace/projects/vale/data/icgc/GACA-CN/bam/
+
+#train_test_split_csv:  /storage/groups/epigenereg01/workspace/projects/vale/mutation_tables/GACA-CN/somatic/snvs/train_test_split.csv
+
+#progress_dir: /storage/groups/epigenereg01/workspace/projects/vale/calling/GACA-CN/negatives/
+
+#somatic_vcf: /storage/groups/epigenereg01/workspace/projects/vale/mutation_tables/GACA-CN/somatic/snvs/snvs.filtered.BAM.vcf.gz
+
+#germline_vcfs_dir: /storage/groups/epigenereg01/workspace/projects/vale/data/icgc/GACA-CN/sgv/
+
+#germline_vcfs_dir: /storage/groups/epigenereg01/workspace/projects/vale/calling/GACA-CN/germline/filtered/vqsr/99.9/by_sample/
+
+#LINC-JP
+
+# project_name: LINC-JP
+#
+# input_data_dir: /storage/groups/epigenereg01/workspace/projects/vale/data/icgc/LINC-JP/bam/
+#
+# train_test_split_csv:  /storage/groups/epigenereg01/workspace/projects/vale/mutation_tables/LINC-JP/somatic/snvs/train_test_split.csv
+#
+# progress_dir: /storage/groups/epigenereg01/workspace/projects/vale/calling/LINC-JP/negatives/
+#
+# somatic_vcf: /storage/groups/epigenereg01/workspace/projects/vale/mutation_tables/LINC-JP/somatic/snvs/snvs.filtered.vcf.gz
+#
+# germline_vcfs_dir: /storage/groups/epigenereg01/workspace/projects/vale/data/icgc/LINC-JP/sgv/
+
+
+#ESAD-UK
+
+#project_name: ESAD-UK
+
+#input_data_dir: /storage/groups/epigenereg01/workspace/projects/vale/data/icgc/ESAD-UK/bam/
+
+#train_test_split_csv:  /storage/groups/epigenereg01/workspace/projects/vale/mutation_tables/ESAD-UK/somatic/snvs/train_test_split.csv
+
+#progress_dir: /storage/groups/epigenereg01/workspace/projects/vale/calling/ESAD-UK/negatives/
+
+#somatic_vcf: /storage/groups/epigenereg01/workspace/projects/vale/mutation_tables/ESAD-UK/somatic/snvs/snvs.filtered.vcf.gz
+
+#germline_vcfs_dir: /storage/groups/epigenereg01/workspace/projects/vale/data/icgc/ESAD-UK/sgv/
+
+#BLCA-US
+
+#project_name: BLCA-US
+#
+#input_data_dir: /storage/groups/epigenereg01/workspace/projects/vale/data/icgc/BLCA-US/bam/
+#
+#train_test_split_csv:  /storage/groups/epigenereg01/workspace/projects/vale/mutation_tables/BLCA-US/somatic/snvs/train_test_split.csv
+#
+#progress_dir: /storage/groups/epigenereg01/workspace/projects/vale/calling/BLCA-US/negatives/
+#
+#somatic_vcf: /storage/groups/epigenereg01/workspace/projects/vale/mutation_tables/BLCA-US/somatic/snvs/snvs.filtered.vcf.gz
+#
+#germline_vcfs_dir: /storage/groups/epigenereg01/workspace/projects/vale/data/icgc/BLCA-US/sgv/

@@ -1,0 +1,17 @@
+__default__:
+    mem: "2g"
+    threads_per_core: 1
+    cores: 1
+
+mutect2:
+    mem: "6g"
+    threads_per_core: 1
+    cores: 4
+
+mutect2_pon:
+    mem: "6g"
+    threads_per_core: 1
+    cores: 4
+    
+pileup_summaries:
+    mem: "12g"

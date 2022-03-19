@@ -1,0 +1,16 @@
+refgen_fa: /storage/groups/epigenereg01/workspace/projects/vale/calling/MLL/resources_GRCh37/GRCh37.fa #reference genome FASTA file
+refgen_dict: /storage/groups/epigenereg01/workspace/projects/vale/calling/MLL/resources_GRCh37/GRCh37.dict #reference genome DICT file
+
+#directory with original BAM files
+input_data_dir: /storage/groups/epigenereg01/datasets/MLL-5000-genomes/matched_pairs/BAM/
+
+#output directory
+progress_dir: /storage/groups/epigenereg01/workspace/projects/vale/calling/MLL/somatic/GATK/
+
+#gnomAD database as a single VCF file
+#the INFO filed should only contain the allele frequency (AF)
+gnomAD_light_vcf: /storage/groups/epigenereg01/workspace/projects/vale/tools/gnomAD/v3.1.1_GRCh38/af_only/GRCh37/gnomAD.GRCh38.concat.GRCh37.vcf.gz
+
+#6mln variants subset of gnomAD_light_vcf to calculate contamination
+#larger files require more memory and more time
+gnomAD_short: /storage/groups/epigenereg01/workspace/projects/vale/tools/gnomAD/v3.1.1_GRCh38/af_only/GRCh37/gnomAD.GRCh38.concat.GRCh37.bialleic.small.vcf.gz

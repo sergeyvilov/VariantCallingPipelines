@@ -1,0 +1,72 @@
+gatk_path: /storage/groups/epigenereg01/workspace/projects/vale/tools/gatk-4.2.3.0/gatk #path to gatk
+
+refgen_name: 'GRCh37' #name of reference genome (see the list of resources below)
+
+N_test_bams: 100 #number of BAM files for which calling is performed on the entire genome
+
+intervals_dir: None #'None' or directory with BED files defining calling intervals for each BAM file
+
+train_test_split_csv: None #'None' or a csv file with train/test split
+
+#MLL
+
+#directory with original BAM files
+input_data_dir: /storage/groups/epigenereg01/datasets/MLL-5000-genomes/matched_pairs/BAM/
+#list of tumor BAM files in input_data_dir
+bam_list: /storage/groups/epigenereg01/datasets/MLL-5000-genomes/matched_pairs/BAM/bamlist
+#output dir
+progress_dir: /storage/groups/epigenereg01/workspace/projects/vale/calling/MLL/germline2/
+#'None' or a csv file with train/test split
+train_test_split_csv: /storage/groups/epigenereg01/workspace/projects/vale/calling/MLL/somatic/GATK/concat/snvs/analysis/train_test_split.csv
+
+#TCGA-LAML
+
+#directory contatining BAM files
+#input_data_dir: /storage/groups/epigenereg01/projects/vale/data/202011061/TCGA/LAML_WGS/
+
+#list of tumor BAM files in input_data_dir
+#bam_list: /storage/groups/epigenereg01/workspace/projects/vale/calling/TCGA-LAML/tumor_wgs_bams_build37_duplicates_removed
+
+#progress_dir: /storage/groups/epigenereg01/workspace/projects/vale/calling/TCGA-LAML/germline/
+
+#somatic_vcf: /storage/groups/epigenereg01/workspace/projects/vale/mutation_tables/TCGA-LAML/somatic/all_somatic_GRCh37.vcf.gz
+
+
+#GACA-CN
+
+#input_data_dir: /storage/groups/epigenereg01/workspace/projects/vale/data/icgc/GACA-CN/bam/
+
+#progress_dir: /storage/groups/epigenereg01/workspace/projects/vale/calling/GACA-CN/germline/
+
+#somatic_vcf: /storage/groups/epigenereg01/workspace/projects/vale/mutation_tables/GACA-CN/somatic/snvs/snvs.filtered.BAM.vcf.gz
+
+#bam_list: /storage/groups/epigenereg01/workspace/projects/vale/data/icgc/GACA-CN/bam/bamlist
+
+resources:
+  GRCh37:
+    dbsnp_all_vcf: /storage/groups/epigenereg01/workspace/projects/vale/calling/TCGA-LAML/resources_GRCh37-lite/dbsnp/All_20170710.vcf.gz
+    refgen_fa: /storage/groups/epigenereg01/workspace/projects/vale/calling/MLL/resources_GRCh37/GRCh37.fa
+    refgen_dict: /storage/groups/epigenereg01/workspace/projects/vale/calling/MLL/resources_GRCh37/GRCh37.dict
+    mills_vcf: /storage/groups/epigenereg01/workspace/projects/vale/calling/TCGA-LAML/resources_GRCh37-lite/Validated/validated/Mills_and_1000G_gold_standard.indels.hg37lite.vcf
+    omni_vcf: /storage/groups/epigenereg01/workspace/projects/vale/calling/TCGA-LAML/resources_GRCh37-lite/Validated/validated/1000G_omni2.5.hg37lite.vcf
+    axexome_vcf: /storage/groups/epigenereg01/workspace/projects/vale/calling/TCGA-LAML/resources_GRCh37-lite/Validated/validated/Axiom_Exome_Plus.genotypes.all_populations.poly.hg37lite.vcf
+    g1k_vcf: /storage/groups/epigenereg01/workspace/projects/vale/calling/TCGA-LAML/resources_GRCh37-lite/Validated/validated/1000G_phase1.snps.high_confidence.hg37lite.vcf
+    hapmap_vcf: /storage/groups/epigenereg01/workspace/projects/vale/calling/TCGA-LAML/resources_GRCh37-lite/Validated/validated/hapmap_3.3.hg37lite.vcf
+
+filtering:
+  type: vqsr #'vqsr' or 'hard'
+
+  vqsr:
+    exclude_filtered: True #dont't include filtered variants in final vcf
+    truth_sensitivity_filter_level: 99.9
+
+  hard:
+    # hard filtering as outlined in GATK docs
+    # https://gatk.broadinstitute.org/hc/en-us/articles/360035532412-Can-t-use-VQSR-on-non-model-organism-or-small-dataset,
+    # https://gatk.broadinstitute.org/hc/en-us/articles/360035890471-Hard-filtering-germline-short-variants
+    snvs:
+        "QD < 2.0 || FS > 60.0 || MQ < 40.0 || MQRankSum < -12.5 || ReadPosRankSum < -8.0 || SOR > 3.0"
+    indels:
+        "QD < 2.0 || FS > 200.0 || ReadPosRankSum < -20.0 || SOR > 10.0 || InbreedingCoeff < -0.8"
+
+exp_strategy: WGS
